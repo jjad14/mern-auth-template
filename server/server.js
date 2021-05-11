@@ -5,6 +5,8 @@ const cookieParser =  require('cookie-parser');
 const cors = require("cors");
 const path = require('path');
 
+const userRoutes = require('./routes/userRoutes');
+
 dotenv.config();
 
 // create express app
@@ -26,11 +28,7 @@ app.use(
 );
 
 // Define Routes
-app.get('/test', (req, res) => {
-    res.send("It Works")
-});
-
-// const __dirname = path.resolve();
+app.use('/api/users', userRoutes);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
